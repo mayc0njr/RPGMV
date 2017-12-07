@@ -4,7 +4,7 @@
 
 /*:
  * @plugindesc	Insere restrições de atributos para equipamentos.
- * @author	Conspiracy <Maycon Junior>
+ * @author	Conspiracy <Maycon Junior de Souza Miranda>
  *
  * @help	Basta adicionar uma tag no item de acordo com o status desejado;
  *			<stats:Atk Def MAtk MDef Agil Luck>
