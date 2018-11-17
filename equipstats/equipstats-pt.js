@@ -38,7 +38,7 @@ Game_BattlerBase.prototype.canEquip = function(item) {
 	var attr = item.meta.stats.split(' ');
 	var cont=0;
 	for(var x=0 ; x < attr.length ; x++){
-		if(attr[x] <= $gameHero.param(x+2))
+		if(attr[x] <= this.param(x+2))
 			cont++;
 	}
 	if(cont >= 6)
