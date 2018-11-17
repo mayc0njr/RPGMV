@@ -17,6 +17,11 @@ var old_Game_BattlerBase_canEquip = Game_BattlerBase.prototype.canEquip;
 var old_Game_Actor_changeEquip = Game_Actor.prototype.changeEquip;
 var old_Window_EquipItem_includes = Window_EquipItem.prototype.includes;
 
+Game_Actor.prototype.paramsNoEquip = function(paramId) {
+	var value = this.paramBase(paramId);
+    value += Game_Battler.prototype.paramPlus.call(this, paramId);
+    return value;
+};
 Game_Actor.prototype.changeEquip = function(slotId, item) {
 	if(!item || this.canEquip(item))
 		old_Game_Actor_changeEquip.call(this, slotId, item);
@@ -38,7 +43,7 @@ Game_BattlerBase.prototype.canEquip = function(item) {
 	var attr = item.meta.stats.split(' ');
 	var cont=0;
 	for(var x=0 ; x < attr.length ; x++){
-		if(attr[x] <= this.param(x+2))
+		if(attr[x] <= this.paramsNoEquip(x+2))
 			cont++;
 	}
 	if(cont >= 6)
